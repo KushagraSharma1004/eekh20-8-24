@@ -19,6 +19,12 @@
             color: #333;
             animation: fadeIn 1.5s ease-in-out;
         }
+        .container {
+            width: 100%;
+            max-width: 400px; /* Set maximum width of the form container */
+            margin: auto;
+            padding: 20px;
+        }
 
         .myOrdersDiv{
             display: flex;
@@ -183,13 +189,16 @@
     </style>
 </head>
 <body>
+   
     <div class="back-button" onclick="goToCart()">
         <img src="backImage.jpg" alt="Back"> <!-- Replace with your actual back button image file name -->
     </div>
+     <div class='container' >
     <div class="myOrdersDiv" >
     <h1>My Orders</h1>
     <div id="ordersContainer"></div>
 </div>
+        </div>
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
         import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
