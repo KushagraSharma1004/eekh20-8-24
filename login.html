@@ -420,6 +420,7 @@
 }
 
 #rightMenuBar {
+    visibility: hidden;
     width: 250px;
     height: 355px;
     position: fixed;
@@ -442,6 +443,7 @@
     <div id="rightMenuBar" >
         <div style="margin-left: 20px;" >
         <span style="font-size: 20px; font-weight: 800; color: darkgreen;" >eekh</span>
+        <img style="height: 20px; width: 20px; position: absolute; right: 10px; top: 10px;" src="crossImage.png" alt="cross" onclick="closeMenu()">
         <div style="align-items: center; align-content: center;height: 20px; display: flex; margin-top: 10px; cursor: pointer;" onclick="goToIndex()">
         <img style="height: 20px; width: 20px;" src="logoutImage.png" alt="logout">
         <span style="margin-left: 10px;" >Logout</span>
@@ -453,7 +455,7 @@
     <img onclick="goToWallet()" src="walletImage.png" alt="" style="height: 50px;width: 50;  margin-top: 10px;">
          <img onclick="goToMyOrders()" src="myOrdersImage.png" alt="" style="height: 50px;width: 50;  margin-top: 10px;">
     <img onclick="goToCart()" src="cartImage.png" alt="" style="height: 50px;width: 50;  margin-top: 10px;">
-    <img style="height: 50px;width: 50;  margin-top: 10px;" class="topBarImg" src="menuImage.png" alt="sad">
+    <img style="height: 50px;width: 50;  margin-top: 10px;" class="topBarImg" src="menuImage.png" alt="sad" onclick="openMenu()">
 
 </div> 
 <div>
@@ -955,7 +957,20 @@ function goToMyOrders() {
 function goToIndex() {
     window.location.href = `index.html?`;
 }
+
+function openMenu(){
+    const rightMenuBar = document.getElementById('rightMenuBar');
+    rightMenuBar.style.visibility = 'visible';
+}
+
+function closeMenu(){
+    const rightMenuBar = document.getElementById('rightMenuBar');
+    rightMenuBar.style.visibility = 'hidden';
+}
+
 window.goToCart = goToCart;
+window.openMenu = openMenu;
+window.closeMenu = closeMenu;
 window.goToIndex = goToIndex;
 window.goToMyOrders = goToMyOrders;
 window.goToWallet = goToWallet;
