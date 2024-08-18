@@ -3,320 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Orders</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Cart</title>
     <style>
         body {
-            background: url('cakeBackground.jpg') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Poppins', sans-serif;
-            overflow:'hidden';
-           
+            background : url(cakeBackground.jpg);
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        .container {
-            animation: fadeIn 1.5s ease-in-out;
-            color: #333;
-            
-            flex-direction: column;
-            display: flex;
-            width: 100%;
-            max-width: 400px; /* Set maximum width of the form container */
-            
-            
-        }
-
-        .myOrdersDiv{
-            
-            width:99%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            justify-self: center;
-            align-self: center;
-            flex-direction: column;
-            background-color:'blue';
-            position: absolute;
-            top: 1px;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        h1 {
-            font-size: 2.5em;
-            font-weight: 600;
-            margin-bottom: 1px;
-            color: #fff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-            animation: slideDown 1s ease-out;
-            margin-top: 0px;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        #ordersContainer {
-            padding-top: 0px;
-           
-            width: 100%;
-            max-width: 360px;
-/*             background-blend-mode: color-burn;  */
-            background-color: hsla(0, 0%, 100%, 0.5);
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            flex-direction: row;
-            overflow-y: auto;
-            max-height: 90vh;
-            animation: growIn 1s ease-in-out;
-            
-        }
-
-       
-
-        @keyframes growIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .order-item {
-            display: flex;
-            
+        .cart-container {
+            max-width: 100%;
+            margin: 20px;
+            padding: 10px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeInUp 0.5s ease-in-out both;
-            border-left: 5px solid #007bff;
+            position: relative;
         }
-
-        /* .order-item:nth-child(odd) {
-            border-left-color: #28a745;
-            background-color: rgba(255, 255, 255, 0.95);
-        }
-
-        .order-item:nth-child(even) {
-            border-left-color: #ffc107;
-            background-color: rgba(240, 240, 240, 0.95);
-        } */
-
-        @keyframes fadeInUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .order-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        .order-item{
-            flex-direction: column;
-            overflow: hidden;
-            
-        }
-
-        .order-item img {
-            height: 60px;
-            width: 60px;
-            
-            border-radius: 7px;
-            object-fit: cover;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            animation: bounceIn 0.6s ease;
-        }
-
-        @keyframes bounceIn {
-            from, 20%, 40%, 60%, 80%, to {
-                animation-timing-function: ease-in-out;
-            }
-            from {
-                opacity: 0;
-                transform: scale3d(0.3, 0.3, 0.3);
-            }
-            20% {
-                transform: scale3d(1.1, 1.1, 1.1);
-            }
-            40% {
-                transform: scale3d(0.9, 0.9, 0.9);
-            }
-            60% {
-                opacity: 1;
-                transform: scale3d(1.03, 1.03, 1.03);
-            }
-            80% {
-                transform: scale3d(0.97, 0.97, 0.97);
-            }
-            to {
-                opacity: 1;
-                transform: scale3d(1, 1, 1);
-            }
-        }
-
-        .order-item div {
+        .cart-item {
             display: flex;
-            flex-direction: row;
-            flex-grow: 1;
-            animation: fadeInRight 0.6s ease-in-out;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
         }
-
-        @keyframes fadeInRight {
-            from { transform: translateX(-20px); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        .cart-item img {
+            height: 80px;
+            width: 80px;
+            border-radius: 8px;
         }
-
-        .order-item span {
+        .cart-item .details {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .cart-item .details span {
+            display: block;
             font-size: 16px;
-            color: #555;
-            margin-bottom: 5px;
+            color: #333;
         }
-
-        .order-item strong {
-            color: #007bff;
-            font-weight: 600;
-
+        .cart-item .quantity-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
         }
-
-        .status {
-            margin-top: 10px;
-            font-size: 14px;
-            text-align: right;
-            color: #999;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .back-button {
-            top: 10px;
-            left: 10px;
+        .cart-item .quantity-controls button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
             cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .cart-item .quantity-controls button:hover {
+            background-color: #0056b3;
+        }
+        .cart-item .quantity-controls button.remove {
+            background-color: #dc3545;
+        }
+        .cart-item .quantity-controls button.remove:hover {
+            background-color: #c82333;
+        }
+        .cart-item input {
+            width: 60px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #totalAmountContainer {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        #confirmButton {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        #confirmButton:hover {
+            background-color: #218838;
+        }
+        .back-button {
+            margin-top: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .back-button img {
             height: 40px;
             width: 40px;
-            background-color: black;
-            position: absolute;
-            z-index: 3;
         }
-        
-
-       .kushu{
-        flex-direction: column;
-        margin-top: 10px;
-       }
-
-       .nameQuantityPrice{
-        border-radius: 7px;
-        flex-direction: row;
-        align-items: center;
-        
-        justify-content: center;
-       }
-
-       .itemname span {
-        width: 121.2;
-       }
-
-
-       .itemname{
-        border-radius: 7px;
-        /* background-color: blue; */
-        align-items: center;
-        justify-content: center;
-        width: 121.2px;
-        
-    }
-
-       .itemname strong{
-        
-        color: rgb(230, 134, 134);
-        
-       }
-
-       .itemquantity{
-        border-radius: 7px;
-        /* background-color: blueviolet; */
-        align-items: center;
-        justify-content: center;
-       }
-       .itemprice{
-        border-radius: 7px;
-        /* background-color: #28a745; */
-        align-items: center;
-        justify-content: center;
-            
-       }
-
-       .orderStatusInsideText{
-        /* background-color: red; */
-        height: 30px;
-        align-items: center;
-        border-radius: 7px;
-        font-size: 12px;
-       }
-
-       .orderStatusInsideText2{
-        /* background-color: red; */
-        height: 30px;
-        align-items: center;
-        border-radius: 7px;
-       }
-
-       .orderTotalAmountInsideText2{
-        /* background-color: royalblue; */
-        flex-direction: row;
-        align-items: center;
-        font-size: 17px;
-        border-radius: 7px;
-        color: darkgreen;
-        
-       }
-
-       .orderTotalAmountInsideText{
-        /* background-color: white; */
-        flex-direction: row;
-        align-items: center;
-        border-radius: 7px;
-        font-size: 12px;
-       }
-
-        .itemPriceInsideText2{
-            color: black;
-        }
-
-        .topRateBar{
-            height: 30px;
-            background-color: blue;
-            position: absolute;
-            z-index: 3;
-        }
-       
-       
-        
-       
     </style>
 </head>
 <body>
-   
-    
-        <img class="back-button" onclick="goToCart()" src="backImage.jpg" alt="Back"> 
-    
-     <div class='container' >
-            <div class="myOrdersDiv" >
-            <h1>My Orders</h1>
-            
-            <div id="ordersContainer"></div>
+
+<div class="back-button" onclick="goToMenu()">
+            <img src="backImage.jpg" alt="Back"> <!-- Replace with your actual back button image file name -->
         </div>
-                </div>
+
+    <div class="cart-container">
+        
+        <div id="cartItemsContainer"></div>
+        <div id="totalAmountContainer"></div> <!-- Total amount section -->
+        <button id="confirmButton" onclick="confirmOrder()">Confirm Order</button>
+    </div>
+
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-        import { getFirestore, collection, getDocs } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
+        import { getFirestore, collection, getDocs, addDoc, doc, getDoc, updateDoc, deleteDoc,writeBatch } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js';
 
         const firebaseConfig = {
             apiKey: "AIzaSyDjpg5dNL6R44dPpoDQabNaT8tLVmVWTQQ",
@@ -334,67 +142,146 @@
         const queryParams = new URLSearchParams(window.location.search);
         const mobile = queryParams.get('mobile');
 
-        async function loadOrders() {
-            const ordersRef = collection(db, 'users', mobile, 'orders');
-            const querySnapshot = await getDocs(ordersRef);
-            const ordersContainer = document.getElementById('ordersContainer');
-            ordersContainer.innerHTML = '';
+        async function loadCartItems() {
+            const cartRef = collection(db, 'users', mobile, 'cart');
+            const querySnapshot = await getDocs(cartRef);
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            cartItemsContainer.innerHTML = '';
+
+            let totalAmount = 0;
 
             querySnapshot.forEach(doc => {
-                const order = doc.data();
-                const orderElement = document.createElement('div');
-                orderElement.className = 'order-item';
-                order.order.forEach(item => {
-                    const itemElement = document.createElement('div');
-                    itemElement.innerHTML = `
-                    <div style='flex-direction:row' >
-                    
-                       
-                    <div class='kushu' >
-                       
-                        <img src="${item.itemImage}" alt="${item.itemName}">
-                        
-                        <div class="nameQuantityPrice" >
-                            <div class='itemname' ><span><strong>${item.itemName}</strong></span></div>
-                            <div class='itemquantity' ><span>${item.quantity}</span></div>
-                            <div class='itemprice' ><span><div class='itemPriceInsideText2' >Rs. ${item.itemPrice}</span></div></div>
-                        </div>
-                        </div> 
-                        </div>
-                    `;
-                    orderElement.appendChild(itemElement);
-                });
-                orderElement.innerHTML += `
-                    <div class="status">
-                        <div class='orderStatusText' >
-                        <div class='orderStatusInsideText' > <strong>Status:</strong></div>  <div class='orderStatusInsideText2' >${order.status}<br></div>
-                        </div>
-                        <div class='orderTotalAmountText' >
-                        <div class='orderTotalAmountInsideText' ><strong>Total Amount:</strong></div> <div class='orderTotalAmountInsideText2' >Rs. ${order.totalAmount}</div>
+                const item = doc.data();
+                totalAmount += item.itemPrice * item.quantity;
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <img src="${item.itemImage}" alt="${item.itemName}">
+                    <div class="details">
+                        <span>${item.itemName}</span>
+                        <span>Rs. ${item.itemPrice}</span>
                     </div>
-                    </div>`;
-                ordersContainer.appendChild(orderElement);
-                const statusValueElement = orderElement.querySelector('.orderStatusInsideText2');
-                if (statusValueElement.textContent.includes('Approved')) {
-                    statusValueElement.style.color = 'lightgreen';
-                    orderElement.style.borderLeftColor ='lightgreen';
-                } else if (statusValueElement.textContent.includes('Pending')){
-                    statusValueElement.style.color = 'rgb(255, 255, 13)';
-                    orderElement.style.borderLeftColor ='rgb(255, 255, 13)';
-                }else{
-                    statusValueElement.style.color = 'red';
-                    orderElement.style.borderLeftColor ='red';
-                }
+                    <div class="quantity-controls">
+                        <button onclick="changeQuantity('${doc.id}', -1)">-</button>
+                        <input type="number" value="${item.quantity}" min="1" readonly>
+                        <button onclick="changeQuantity('${doc.id}', 1)">+</button>
+                        <button class="remove" onclick="removeItem('${doc.id}')">Remove</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemElement);
             });
-            
+
+            // Display total amount
+            document.getElementById('totalAmountContainer').innerText = `Total Amount: Rs. ${totalAmount}`;
+
+            const confirmButton = document.getElementById('confirmButton');
+            confirmButton.setAttribute('data-total', totalAmount);
         }
 
+        async function changeQuantity(itemId, change) {
+            try {
+                const itemRef = doc(db, 'users', mobile, 'cart', itemId);
+                const itemSnap = await getDoc(itemRef);
 
-        function goToCart() {
-            window.location.href = 'Cart.html?mobile=' + mobile;
+                if (itemSnap.exists()) {
+                    const itemData = itemSnap.data();
+                    const currentQuantity = itemData.quantity;
+                    const newQuantity = Math.max(parseInt(currentQuantity) + change, 1);
+
+                    if (newQuantity > 0) {
+                        await updateDoc(itemRef, {
+                            quantity: newQuantity
+                        });
+                    } else {
+                        await deleteDoc(itemRef);
+                    }
+
+                    loadCartItems();
+                }
+            } catch (error) {
+                console.error('Error changing quantity:', error.message);
+                alert('There was an issue updating the quantity. Please try again.');
+            }
         }
-        window.goToCart = goToCart;
-        loadOrders();
+
+        async function removeItem(itemId) {
+            try {
+                const itemRef = doc(db, 'users', mobile, 'cart', itemId);
+                await deleteDoc(itemRef);
+                loadCartItems();
+            } catch (error) {
+                console.error('Error removing item:', error.message);
+                alert('There was an issue removing the item. Please try again.');
+            }
+        }
+        async function confirmOrder() {
+    try {
+        const totalAmount = document.getElementById('confirmButton').getAttribute('data-total');
+        if (!totalAmount || totalAmount <= 0) {
+            alert('Error: No items in cart.');
+            return;
+        }
+
+        // Get cart items
+        const cartRef = collection(db, 'users', mobile, 'cart');
+        const querySnapshot = await getDocs(cartRef);
+        const orderItems = [];
+
+        querySnapshot.forEach(doc => {
+            const item = doc.data();
+            orderItems.push(item);
+        });
+
+        // Store order in the user's orders collection
+        const ordersRef = collection(db, 'users', mobile, 'orders');
+        await addDoc(ordersRef, {
+            order: orderItems,
+            totalAmount: totalAmount,
+            status: 'Pending', // Initial status
+            timestamp: new Date(),
+            referralPhoneNumber: '1234567890', // Replace with actual referral phone number if applicable
+            userMobileNumber: mobile
+        });
+
+        // Update referral amount for the user
+        const referralRef = doc(db, 'users', mobile);
+        const userSnap = await getDoc(referralRef);
+
+        if (userSnap.exists()) {
+            const userData = userSnap.data();
+            const referralAmount = (userData.referralAmount || 0) + (0.10 * totalAmount);
+
+            await updateDoc(referralRef, {
+                referralAmount: referralAmount
+            });
+        }
+
+        // Empty the cart
+        const batch = writeBatch(db);
+        querySnapshot.forEach(doc => {
+            const itemRef = doc.ref;
+            batch.delete(itemRef);
+        });
+        await batch.commit();
+
+        // Redirect to My Orders page
+        window.location.href = 'myOrders.html?mobile=' + mobile;
+
+    } catch (error) {
+        console.error('Error confirming order:', error.message);
+        alert('There was an issue confirming your order. Please try again.');
+    }
+}
+        function goToMenu() {
+            window.location.href = 'login.html?mobile=' + mobile;
+        }
+
+        window.onload = loadCartItems;
+
+        window.confirmOrder = confirmOrder;
+        window.removeItem = removeItem;
+        window.changeQuantity = changeQuantity;
+        window.goToMenu = goToMenu;
     </script>
 </body>
 </html>
